@@ -60,19 +60,17 @@ map tk :tabprev<CR>
 map th :tabm -1<CR>
 map tl :tabm +1<CR>
 map <Leader>t :tabnew<CR>
-map <Leader>, <C-y>,
+map <Leader>e <C-y>,
 map <Leader>s :%s/
 map <Leader>c :.,$s/
 map <Leader>f :Unite line<CR> i
-
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 filetype plugin indent on
 syntax enable
+
 
 if 0 | endif
 
@@ -92,18 +90,26 @@ NeoBundle 'https://github.com/mattn/emmet-vim'
 NeoBundle 'https://github.com/scrooloose/nerdcommenter'
 NeoBundle 'https://github.com/scrooloose/nerdtree'
 NeoBundle 'https://github.com/tmhedberg/matchit'
-NeoBundle 'https://github.com/terryma/vim-smooth-scroll'
 NeoBundle 'https://github.com/junegunn/vim-easy-align'
 NeoBundle 'https://github.com/terryma/vim-multiple-cursors'
 NeoBundle 'https://github.com/captbaritone/better-indent-support-for-php-with-html'
 NeoBundle 'https://github.com/Valloric/YouCompleteMe'
 NeoBundle 'https://github.com/Shougo/unite.vim'
-NeoBundle 'https://github.com/SirVer/ultisnips'
 NeoBundle 'https://github.com/Raimondi/delimitMate'
 NeoBundle 'https://github.com/easymotion/vim-easymotion'
 NeoBundle 'https://github.com/scrooloose/syntastic'
+NeoBundle 'https://github.com/SirVer/ultisnips'
+NeoBundle 'https://github.com/honza/vim-snippets'
 
 call neobundle#end()
+
+let g:ctrlp_open_new_file = 't'
+
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-m>"
+
+autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 
 filetype plugin indent on
 
@@ -118,12 +124,3 @@ let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_quiet_messages = {
         \ "!level":  "errors",
         \ "type":    "style" }
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
