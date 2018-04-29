@@ -48,7 +48,7 @@ let mapleader=","
 imap jk <ESC>
 imap JK <ESC>
 map ; :
-map <F2> :e $MYVIMRC<CR>
+map <F2> :e $HOME/_vimrc<CR>
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 map <C-j> <C-w>j
