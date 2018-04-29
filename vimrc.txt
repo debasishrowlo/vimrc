@@ -1,31 +1,28 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
 
 set diffexpr=MyDiff()
 function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+	let opt = '-a --binary '
+	if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+	if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+	let arg1 = v:fname_in
+	if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+	let arg2 = v:fname_new
+	if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+	let arg3 = v:fname_out
+	if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+	let eq = ''
+	if $VIMRUNTIME =~ ' '
+		if &sh =~ '\<cmd'
+			let cmd = '""' . $VIMRUNTIME . '\diff"'
+			let eq = '"'
+		else
+			let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+		endif
+	else
+		let cmd = $VIMRUNTIME . '\diff'
+	endif
+	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
 set nohlsearch
@@ -42,6 +39,15 @@ set noswapfile
 set nobackup
 set nowritebackup
 set noundofile
+
+if has('gui_running')
+	colorscheme dracula
+	set guifont=consolas:h10
+	set guioptions-=m  "remove menu bar
+	set guioptions-=T  "remove toolbar
+	set guioptions-=r  "remove right-hand scroll bar
+	set guioptions-=L  "remove left-hand scroll bar
+endif
 
 let mapleader=","
 
@@ -63,65 +69,56 @@ map <Leader>t :tabnew<CR>
 map <Leader>e <C-y>,
 map <Leader>s :%s/
 map <Leader>c :.,$s/
-map <Leader>f :Unite line<CR> i
-
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-filetype plugin indent on
-syntax enable
-
-
-if 0 | endif
 
 if &compatible
 	set nocompatible
 endif
 
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'https://github.com/kien/ctrlp.vim'
-NeoBundle 'https://github.com/tpope/vim-surround'
-NeoBundle 'https://github.com/mattn/emmet-vim'
-NeoBundle 'https://github.com/scrooloose/nerdcommenter'
-NeoBundle 'https://github.com/scrooloose/nerdtree'
-NeoBundle 'https://github.com/tmhedberg/matchit'
-NeoBundle 'https://github.com/junegunn/vim-easy-align'
-NeoBundle 'https://github.com/terryma/vim-multiple-cursors'
-NeoBundle 'https://github.com/captbaritone/better-indent-support-for-php-with-html'
-NeoBundle 'https://github.com/Valloric/YouCompleteMe'
-NeoBundle 'https://github.com/Shougo/unite.vim'
-NeoBundle 'https://github.com/Raimondi/delimitMate'
-NeoBundle 'https://github.com/easymotion/vim-easymotion'
-NeoBundle 'https://github.com/scrooloose/syntastic'
-NeoBundle 'https://github.com/SirVer/ultisnips'
-NeoBundle 'https://github.com/honza/vim-snippets'
-
-call neobundle#end()
-
-let g:ctrlp_open_new_file = 't'
-
-let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-m>"
-
-autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
-
 filetype plugin indent on
 
-NeoBundleCheck
-	
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'
 
-set wildignore+=/bower_components,/node_modules,/vendor
-call unite#custom#source('file_rec', 'ignore_globs', split(&wildignore, ','))
+set wildignore+=/node_modules,/vendor
 
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_quiet_messages = {
-        \ "!level":  "errors",
-        \ "type":    "style" 
-}
+if &compatible
+	set nocompatible
+endif
+
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+	call dein#begin('~/.cache/dein')
+
+	call dein#add('~/.cache/dein')
+	call dein#add('airblade/vim-gitgutter')
+	call dein#add('captbaritone/better-indent-support-for-php-with-html')
+	call dein#add('easymotion/vim-easymotion')
+	call dein#add('mattn/emmet-vim')
+	call dein#add('honza/vim-snippets')
+	call dein#add('junegunn/vim-easy-align')
+	call dein#add('kien/ctrlp.vim')
+	call dein#add('Raimondi/delimitMate')
+	call dein#add('scrooloose/nerdcommenter')
+	call dein#add('scrooloose/nerdtree')
+	call dein#add('scrooloose/syntastic')
+	call dein#add('Shougo/deoplete.nvim')
+	call dein#add('Shougo/unite.vim')
+	call dein#add('SirVer/ultisnips')
+	call dein#add('terryma/vim-multiple-cursors')
+	call dein#add('tmhedberg/matchit')
+	call dein#add('tpope/vim-surround')
+	call dein#add('tpope/vim-fugitive')
+	call dein#add('Valloric/YouCompleteMe')
+
+	if !has('nvim')
+		call dein#add('roxma/nvim-yarp')
+		call dein#add('roxma/vim-hug-neovim-rpc')
+	endif
+
+	call dein#end()
+	call dein#save_state()
+endif
+
+syntax enable
+
