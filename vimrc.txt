@@ -123,4 +123,5 @@ call unite#custom#source('file_rec', 'ignore_globs', split(&wildignore, ','))
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_quiet_messages = {
         \ "!level":  "errors",
-        \ "type":    "style" }
+        \ "type":    "style" 
+}
