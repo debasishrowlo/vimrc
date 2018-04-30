@@ -39,6 +39,8 @@ set noswapfile
 set nobackup
 set nowritebackup
 set noundofile
+set foldmethod=indent
+set foldlevelstart=99
 
 if has('gui_running')
 	colorscheme dracula
@@ -91,7 +93,7 @@ if dein#load_state('~/.cache/dein')
 	call dein#begin('~/.cache/dein')
 
 	call dein#add('~/.cache/dein')
-	call dein#add('airblade/vim-gitgutter')
+	call dein#add('mhinz/vim-signify')
 	call dein#add('captbaritone/better-indent-support-for-php-with-html')
 	call dein#add('easymotion/vim-easymotion')
 	call dein#add('mattn/emmet-vim')
