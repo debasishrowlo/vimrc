@@ -41,6 +41,7 @@ set nowritebackup
 set noundofile
 set foldmethod=indent
 set foldlevelstart=99
+set linespace=6
 
 if has('gui_running')
 	colorscheme dracula
@@ -71,6 +72,7 @@ map <Leader>t :tabnew<CR>
 map <Leader>e <C-y>,
 map <Leader>s :%s/
 map <Leader>c :.,$s/
+map <Leader>f :Unite line<CR> i
 
 if &compatible
 	set nocompatible
@@ -123,4 +125,3 @@ if dein#load_state('~/.cache/dein')
 endif
 
 syntax enable
-
