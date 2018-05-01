@@ -132,5 +132,8 @@ if dein#load_state('~/.cache/dein')
 	call dein#save_state()
 endif
 
+let NERDTreeShowHidden=1
+let g:ctrlp_show_hidden = 1
+
 syntax enable
 
