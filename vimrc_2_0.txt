@@ -1,0 +1,153 @@
+" Default {{{
+    source $VIMRUNTIME/vimrc_example.vim
+
+    set diffexpr=MyDiff()
+    function! MyDiff()
+      let opt = '-a --binary '
+      if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+      if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+      let arg1 = v:fname_in
+      if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+      let arg1 = substitute(arg1, '!', '\!', 'g')
+      let arg2 = v:fname_new
+      if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+      let arg2 = substitute(arg2, '!', '\!', 'g')
+      let arg3 = v:fname_out
+      if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+      let arg3 = substitute(arg3, '!', '\!', 'g')
+      if $VIMRUNTIME =~ ' '
+        if &sh =~ '\<cmd'
+          if empty(&shellxquote)
+            let l:shxq_sav = ''
+            set shellxquote&
+          endif
+          let cmd = '"' . $VIMRUNTIME . '\diff"'
+        else
+          let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+        endif
+      else
+        let cmd = $VIMRUNTIME . '\diff'
+      endif
+      let cmd = substitute(cmd, '!', '\!', 'g')
+      silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+      if exists('l:shxq_sav')
+        let &shellxquote=l:shxq_sav
+      endif
+    endfunction
+" }}}
+
+" Misc {{{
+    " enable syntax processing
+    syntax enable
+
+    " load filetype-specific indent files
+    filetype indent on
+
+    " redraw only when need to
+    set lazyredraw
+
+    " make the search case sensitive if uppercase letter available
+    set ignorecase
+    set smartcase
+
+    " highlight matches
+    set hlsearch
+
+    " turn off search highlight
+    set nohlsearch
+
+    " highlight current line
+    set cursorline
+
+    " prevent creating swap file on save
+    set noswapfile
+
+    " prevent creating backup file on save
+    set nobackup
+    set nowritebackup
+
+    " prevent creating undo file on save
+    set noundofile
+
+    " do not automatically wrap on load
+    set nowrap
+
+    " do not automatically wrap text when typing
+    set formatoptions-=t
+" }}}
+
+" Folding {{{
+    " enable folding
+    set foldenable
+
+    " open most folds by default
+    set foldlevelstart=10
+
+    " set most number of folds allowed
+    set foldnestmax=10
+
+    " space key opens/closes folds
+    nnoremap <space> za
+
+    " fold based on the indent level
+    set foldmethod=indent
+
+    set modelines=1
+" }}}
+
+" Colors {{{
+    " set default colorscheme
+    colorscheme evening 
+" }}}
+
+" Spaces and Tabs {{{
+    " number of visual spaces per TAB
+    set tabstop=4
+
+    " number of spaces in tab when editing
+    set softtabstop=4
+
+    " set the number of spaces to shift when indenting in normal mode
+    set shiftwidth=4
+
+    " convert tabs to spaces
+    set expandtab
+" }}}
+
+" UI {{{
+    " show relative line numbers
+    set relativenumber
+
+    " Hide Menu Bar
+    set guioptions -=m 
+
+    " Hide Tool Bar
+    set guioptions -=T
+
+    " Hide scrollbars
+    set guioptions-=r
+
+    " set editor font
+    set guifont=consolas:h11:b
+" }}}
+
+" Key Remaps {{{
+    " leader is comma
+    let mapleader=","
+
+    " map semicolon to colon
+    map ; :
+
+    " jk is escape
+    inoremap jk <esc>
+" }}}
+
+" Combination Key Remaps {{{
+    " refresh vim to view latest vimrc updates
+    map <C-r> :source $MYVIMRC<CR>
+
+    " open vimrc
+    map <F2> :e $MYVIMRC<CR>
+" }}}
+
+" vim:foldmethod=marker:foldlevel=0
