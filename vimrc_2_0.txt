@@ -111,11 +111,6 @@
     nnoremap <leader>5 :set foldlevel=5<CR>
 " }}}
 
-" Colors {{{
-    " set default colorscheme
-    colorscheme dracula 
-" }}}
-
 " Spaces and Tabs {{{
     " number of visual spaces per TAB
     set tabstop=4
@@ -140,7 +135,13 @@
     " Hide Tool Bar
     set guioptions -=T
 
-    " Hide scrollbars
+    " Hide left scrollbar
+    set guioptions-=l
+
+    " Hide left scrollbar when windows are vertically split
+    set guioptions-=L
+
+    " Hide right scrollbar
     set guioptions-=r
 
     " set editor font
@@ -223,18 +224,26 @@
     " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " }}}
 
-" External packages settings {{{
-    " Toggle NERDTree file explorer
+" External package settings {{{
+    " NERDTree - Toggle file explorer
     map <C-E> :NERDTreeToggle<CR>
 
-    " Find the current file in NERDTree file explorer
+    " NERDTree - Find the current file in file explorer
     map <C-F> :NERDTreeFind<CR>
 
-    " Show hidden files in NERDTree file explorer
+    " NERDTree - Show hidden files in file explorer
     let NERDTreeShowHidden=1
 
-    " Show dotfiles and dotdirs in ctrlp file finder
+    " ctrlp - Show dotfiles and dotdirs in file finder
     let ctrlp_show_hidden=1
+
+    " ctrlp - Ignore loading provided folders to improve startup time
+    let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
+" }}}
+
+" Colors {{{
+    " set default colorscheme
+    colorscheme dracula 
 " }}}
 
 " vim:foldlevel=0
