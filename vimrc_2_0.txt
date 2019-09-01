@@ -37,12 +37,6 @@
 " }}}
 
 " Misc {{{
-    " enable syntax processing
-    syntax enable
-
-    " load filetype-specific indent files
-    filetype indent on
-
     " redraw only when need to
     set lazyredraw
 
@@ -74,6 +68,9 @@
 
     " do not automatically wrap text when typing
     set formatoptions-=t
+
+    " set leader to comma
+    let mapleader=","
 " }}}
 
 " Folding {{{
@@ -86,18 +83,37 @@
     " set most number of folds allowed
     set foldnestmax=10
 
-    " space key opens/closes folds
-    nnoremap <space> za
-
     " fold based on the indent level
     set foldmethod=indent
 
+    " enable modelines (used in this file on the last line)
     set modelines=1
+
+    " space key opens/closes folds
+    nnoremap <space> za
+
+    " set foldlevel to 0
+    nnoremap <leader>0 :set foldlevel=0<CR>
+
+    " set foldlevel to 1
+    nnoremap <leader>1 :set foldlevel=1<CR>
+
+    " set foldlevel to 2
+    nnoremap <leader>2 :set foldlevel=2<CR>
+
+    " set foldlevel to 3
+    nnoremap <leader>3 :set foldlevel=3<CR>
+
+    " set foldlevel to 4
+    nnoremap <leader>4 :set foldlevel=4<CR>
+
+    " set foldlevel to 5
+    nnoremap <leader>5 :set foldlevel=5<CR>
 " }}}
 
 " Colors {{{
     " set default colorscheme
-    colorscheme evening 
+    colorscheme dracula 
 " }}}
 
 " Spaces and Tabs {{{
@@ -131,18 +147,47 @@
     set guifont=consolas:h11:b
 " }}}
 
-" Key Remaps {{{
-    " leader is comma
-    let mapleader=","
-
+" Movement Keymaps {{{
     " map semicolon to colon
     map ; :
 
     " jk is escape
     inoremap jk <esc>
+
+    " JK is escape
+    inoremap JK <esc>
+
+    " Jump to the window left to the current window
+    map <C-h> <C-w>h
+
+    " Jump to the window right to the current window
+    map <C-l> <C-w>l
+
+    " Jump to the window bottom to the current window
+    map <C-j> <C-w>j
+
+    " Jump to the window top to the current window
+    map <C-k> <C-w>k
 " }}}
 
-" Combination Key Remaps {{{
+" Tab Keymaps {{{
+    " Open new tab
+    map <Leader>t :tabnew<CR>
+
+    " Move to next tab
+    map tj :tabnext<CR>
+
+    " Move to previous tab
+    map tk :tabprev<CR>
+
+    " Move current tab to the left
+    map th :tabm -1<CR>
+
+    " Move current tab to the right
+    map tl :tabm +1<CR>
+" }}}
+
+" Combination Keymaps {{{
     " refresh vim to view latest vimrc updates
     map <C-r> :source $MYVIMRC<CR>
 
@@ -150,4 +195,46 @@
     map <F2> :e $MYVIMRC<CR>
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0
+" External Packages {{{
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'dracula/vim'
+    Plugin 'honza/vim-snippets'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'terryma/vim-multiple-cursors'
+
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" }}}
+
+" External packages settings {{{
+    " Toggle NERDTree file explorer
+    map <C-E> :NERDTreeToggle<CR>
+
+    " Find the current file in NERDTree file explorer
+    map <C-F> :NERDTreeFind<CR>
+
+    " Show hidden files in NERDTree file explorer
+    let NERDTreeShowHidden=1
+
+    " Show dotfiles and dotdirs in ctrlp file finder
+    let ctrlp_show_hidden=1
+" }}}
+
+" vim:foldlevel=0
