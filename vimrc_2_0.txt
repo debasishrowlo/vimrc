@@ -208,6 +208,7 @@
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'dracula/vim'
     Plugin 'honza/vim-snippets'
+    Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
