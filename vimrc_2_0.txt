@@ -71,6 +71,9 @@
 
     " set leader to comma
     let mapleader=","
+
+    " open the new file on the right when splitting a view
+    set splitright
 " }}}
 
 " Folding {{{
@@ -145,7 +148,10 @@
     set guioptions-=r
 
     " set editor font
-    set guifont=consolas:h11:b
+    set guifont=consolas:h12:b
+
+    " set line height
+    set linespace=8
 " }}}
 
 " Movement Keymaps {{{
@@ -189,8 +195,8 @@
 " }}}
 
 " Combination Keymaps {{{
-    " refresh vim to view latest vimrc updates
-    map <C-r> :source $MYVIMRC<CR>
+    " reload vim to apply vimrc updates
+    map <F5> :source $MYVIMRC<CR>
 
     " open vimrc
     map <F2> :e $MYVIMRC<CR>
@@ -210,6 +216,7 @@
     Plugin 'honza/vim-snippets'
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
     Plugin 'terryma/vim-multiple-cursors'
@@ -227,10 +234,10 @@
 
 " External package settings {{{
     " NERDTree - Toggle file explorer
-    map <C-E> :NERDTreeToggle<CR>
+    map <C-S-E> :NERDTreeToggle<CR>
 
     " NERDTree - Find the current file in file explorer
-    map <C-F> :NERDTreeFind<CR>
+    map <C-S-F> :NERDTreeFind<CR>
 
     " NERDTree - Show hidden files in file explorer
     let NERDTreeShowHidden=1
