@@ -234,10 +234,10 @@
 
 " External package settings {{{
     " NERDTree - Toggle file explorer
-    map <C-S-E> :NERDTreeToggle<CR>
+    map <F3> :NERDTreeToggle<CR>
 
     " NERDTree - Find the current file in file explorer
-    map <C-S-F> :NERDTreeFind<CR>
+    map <F4> :NERDTreeFind<CR>
 
     " NERDTree - Show hidden files in file explorer
     let NERDTreeShowHidden=1
@@ -256,10 +256,10 @@
 
 " File specific settings {{{
     " 2 space tabs for html files
-    autocmd Filetype html setlocal ts=2 sw=2 expandtab
-    "
+    autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
     " 2 space tabs for javascript files
-    autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+    autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " }}}
 
 " vim:foldlevel=0
