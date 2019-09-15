@@ -212,10 +212,13 @@
 
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
+
     Plugin 'dracula/vim'
     Plugin 'honza/vim-snippets'
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'MaxMEllon/vim-jsx-pretty'
+    Plugin 'prettier/vim-prettier'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
@@ -234,10 +237,10 @@
 
 " External package settings {{{
     " NERDTree - Toggle file explorer
-    map <F3> :NERDTreeToggle<CR>
+    map <leader>e :NERDTreeToggle<CR>
 
     " NERDTree - Find the current file in file explorer
-    map <F4> :NERDTreeFind<CR>
+    map <leader>f :NERDTreeFind<CR>
 
     " NERDTree - Show hidden files in file explorer
     let NERDTreeShowHidden=1
@@ -247,6 +250,13 @@
 
     " ctrlp - Ignore loading provided folders to improve startup time
     let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
+
+    " vim-prettier - Disable auto formatting
+    let g:prettier#autoformat = 0
+
+    " vim-prettier - Automatically format specified files on save
+    autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.json,*.graphql,*.md,*.html,*.blade.php,*.php Prettier
+
 " }}}
 
 " Colors {{{
