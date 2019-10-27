@@ -74,6 +74,9 @@
 
     " open the new file on the right when splitting a view
     set splitright
+
+    noremap <Leader>y "+y
+    noremap <Leader>p "+p
 " }}}
 
 " Folding {{{
@@ -148,10 +151,7 @@
     set guioptions-=r
 
     " set editor font
-    set guifont=consolas:h12:b
-
-    " set line height
-    set linespace=8
+    set guifont=consolas:h14:b
 " }}}
 
 " Movement Keymaps {{{
@@ -218,7 +218,25 @@
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
     Plugin 'MaxMEllon/vim-jsx-pretty'
-    Plugin 'prettier/vim-prettier'
+    Plugin 'prettier/vim-prettier', {
+          \ 'do': 'yarn install',
+          \ 'branch': 'release/1.x',
+          \ 'for': [
+            \ 'javascript',
+            \ 'typescript',
+            \ 'css',
+            \ 'less',
+            \ 'scss',
+            \ 'json',
+            \ 'graphql',
+            \ 'markdown',
+            \ 'vue',
+            \ 'lua',
+            \ 'php',
+            \ 'python',
+            \ 'ruby',
+            \ 'html',
+            \ 'swift' ] }
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
@@ -253,10 +271,7 @@
 
     " vim-prettier - Disable auto formatting
     let g:prettier#autoformat = 0
-
-    " vim-prettier - Automatically format specified files on save
-    autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.json,*.graphql,*.md,*.html,*.blade.php,*.php Prettier
-
+    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.php Prettier
 " }}}
 
 " Colors {{{
