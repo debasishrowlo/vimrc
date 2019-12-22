@@ -69,6 +69,15 @@
     " do not automatically wrap text when typing
     set formatoptions-=t
 
+    " do not Auto-wrap comments using textwidth, inserting the current comment leader automatically.
+    set formatoptions-=c
+
+    " do not automatically insert the current comment leader after hitting <Enter> in Insert mode.
+    set formatoptions-=r
+
+    " do not automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+    set formatoptions-=o
+
     " set leader to comma
     let mapleader=","
 
@@ -77,6 +86,7 @@
 
     noremap <Leader>y "+y
     noremap <Leader>p "+p
+
 " }}}
 
 " Folding {{{
@@ -215,28 +225,10 @@
 
     Plugin 'dracula/vim'
     Plugin 'honza/vim-snippets'
+    Plugin 'isruslan/vim-es6'
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
     Plugin 'MaxMEllon/vim-jsx-pretty'
-    Plugin 'prettier/vim-prettier', {
-          \ 'do': 'yarn install',
-          \ 'branch': 'release/1.x',
-          \ 'for': [
-            \ 'javascript',
-            \ 'typescript',
-            \ 'css',
-            \ 'less',
-            \ 'scss',
-            \ 'json',
-            \ 'graphql',
-            \ 'markdown',
-            \ 'vue',
-            \ 'lua',
-            \ 'php',
-            \ 'python',
-            \ 'ruby',
-            \ 'html',
-            \ 'swift' ] }
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/syntastic'
@@ -268,10 +260,6 @@
 
     " ctrlp - Ignore loading provided folders to improve startup time
     let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
-
-    " vim-prettier - Disable auto formatting
-    let g:prettier#autoformat = 0
-    autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.php Prettier
 " }}}
 
 " Colors {{{
@@ -285,6 +273,9 @@
 
     " 2 space tabs for javascript files
     autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+    " line breaks for text files
+    autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
 " }}}
 
 " vim:foldlevel=0
