@@ -37,6 +37,9 @@
 " }}}
 
 " Misc {{{
+    " auto reload files as they change on disk
+    set autoread
+
     " redraw only when need to
     set lazyredraw
 
@@ -69,9 +72,6 @@
     " do not automatically wrap text when typing
     set formatoptions-=t
 
-    " do not Auto-wrap comments using textwidth, inserting the current comment leader automatically.
-    set formatoptions-=c
-
     " do not automatically insert the current comment leader after hitting <Enter> in Insert mode.
     set formatoptions-=r
 
@@ -86,7 +86,6 @@
 
     noremap <Leader>y "+y
     noremap <Leader>p "+p
-
 " }}}
 
 " Folding {{{
@@ -180,11 +179,11 @@
     " Jump to the window right to the current window
     map <C-l> <C-w>l
 
-    " Jump to the window bottom to the current window
-    map <C-j> <C-w>j
+    " Jump to the beginning of the current wparagraph
+    map <C-k> {
 
-    " Jump to the window top to the current window
-    map <C-k> <C-w>k
+    " Jump to the end of the current wparagraph
+    map <C-j> }
 " }}}
 
 " Tab Keymaps {{{
@@ -228,6 +227,7 @@
     Plugin 'isruslan/vim-es6'
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
+    Plugin 'leafgarland/typescript-vim',
     Plugin 'MaxMEllon/vim-jsx-pretty'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
@@ -271,8 +271,14 @@
     " 2 space tabs for html files
     autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
+    " 2 space tabs for css files
+    autocmd Filetype css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
     " 2 space tabs for javascript files
     autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+    " 2 space tabs for typescript files
+    autocmd Filetype typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
     " line breaks for text files
     autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
