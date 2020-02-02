@@ -201,6 +201,9 @@
 
     " Move current tab to the right
     map tl :tabm +1<CR>
+
+    " close tabs to the right
+    map ta :.+1,$tabdo :tabc<CR>
 " }}}
 
 " Combination Keymaps {{{
@@ -209,6 +212,19 @@
 
     " open vimrc
     map <F2> :e $MYVIMRC<CR>
+
+    " copy file path
+    " Convert slashes to backslashes for Windows.
+    if has('win32')
+      nmap ,fs :let @*=substitute(expand("%"), "/", "\\", "g")<CR>
+      nmap ,fl :let @*=substitute(expand("%:p"), "/", "\\", "g")<CR>
+
+      " This will copy the path in 8.3 short format, for DOS and Windows 9x
+      nmap ,f8 :let @*=substitute(expand("%:p:8"), "/", "\\", "g")<CR>
+    else
+      nmap ,fs :let @*=expand("%")<CR>
+      nmap ,fl :let @*=expand("%:p")<CR>
+    endif
 " }}}
 
 " External Packages {{{
@@ -231,7 +247,6 @@
     Plugin 'MaxMEllon/vim-jsx-pretty'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/syntastic'
     Plugin 'terryma/vim-multiple-cursors'
 
     " All of your Plugins must be added before the following line
