@@ -238,6 +238,7 @@
     " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
+    Plugin 'ayu-theme/ayu-vim'
     Plugin 'dracula/vim'
     Plugin 'honza/vim-snippets'
     Plugin 'isruslan/vim-es6'
@@ -279,7 +280,12 @@
 
 " Colors {{{
     " set default colorscheme
-    colorscheme dracula 
+
+    " enable true colors support
+    set termguicolors
+
+    let ayucolor="dark" 
+    colorscheme ayu
 " }}}
 
 " File specific settings {{{
@@ -294,6 +300,9 @@
 
     " 2 space tabs for typescript files
     autocmd Filetype typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+    " 2 space tabs for typescript files
+    autocmd Filetype json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
     " line breaks for text files
     autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
