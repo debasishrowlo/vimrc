@@ -242,11 +242,11 @@
     Plugin 'dracula/vim'
     Plugin 'honza/vim-snippets'
     Plugin 'isruslan/vim-es6'
-    Plugin 'jiangmiao/auto-pairs'
     Plugin 'jparise/vim-graphql'
     Plugin 'kien/ctrlp.vim'
     Plugin 'leafgarland/typescript-vim',
     Plugin 'MaxMEllon/vim-jsx-pretty'
+    Plugin 'Raimondi/delimitMate'
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'terryma/vim-multiple-cursors'
