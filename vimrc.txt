@@ -203,7 +203,7 @@
     map tl :tabm +1<CR>
 
     " close tabs to the right
-    map ta :.+1,$tabdo :tabc<CR>
+    map <Leader>ta :.+1,$tabdo :tabc<CR>
 " }}}
 
 " Combination Keymaps {{{
@@ -284,8 +284,11 @@
     " enable true colors support
     set termguicolors
 
-    let ayucolor="dark" 
+    let ayucolor="mirage" 
     colorscheme ayu
+
+    "set line numer colors
+    highlight LineNr guifg=#718096
 " }}}
 
 " File specific settings {{{
