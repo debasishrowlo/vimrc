@@ -156,9 +156,6 @@
     " Hide left scrollbar when windows are vertically split
     set guioptions-=L
 
-    " Hide right scrollbar
-    set guioptions-=r
-
     " set editor font
     set guifont=consolas:h14:b
 " }}}
