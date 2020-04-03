@@ -36,6 +36,30 @@
     endfunction
 " }}}
 
+" Colors {{{
+    " enable true colors support
+    set termguicolors
+
+    if !has("gui_running")
+        set term=xterm
+        set t_Co=256
+        let &t_AB="\e[48;5;%dm"
+        let &t_AF="\e[38;5;%dm"
+        colorscheme ayu
+
+        " fix backspace issue on Conemu
+        inoremap <Char-0x07F> <BS>
+        nnoremap <Char-0x07F> <BS>
+    endif
+
+    " set default colorscheme
+    let ayucolor="dark" 
+    colorscheme ayu
+
+    "set line number colors
+    highlight LineNr guifg=#718096
+" }}}
+
 " Misc {{{
     " auto reload files as they change on disk
     set autoread
@@ -52,9 +76,6 @@
 
     " turn off search highlight
     set nohlsearch
-
-    " highlight current line
-    set cursorline
 
     " prevent creating swap file on save
     set noswapfile
@@ -274,19 +295,6 @@
 
     " ctrlp - Ignore loading provided folders to improve startup time
     let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
-" }}}
-
-" Colors {{{
-    " set default colorscheme
-
-    " enable true colors support
-    set termguicolors
-
-    let ayucolor="mirage" 
-    colorscheme ayu
-
-    "set line numer colors
-    highlight LineNr guifg=#718096
 " }}}
 
 " File specific settings {{{
