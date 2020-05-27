@@ -1,4 +1,4 @@
-" Default {{{
+" {{{
     source $VIMRUNTIME/vimrc_example.vim
 
     set diffexpr=MyDiff()
@@ -34,30 +34,6 @@
         let &shellxquote=l:shxq_sav
       endif
     endfunction
-" }}}
-
-" Colors {{{
-    " enable true colors support
-    set termguicolors
-
-    if !has("gui_running")
-        set term=xterm
-        set t_Co=256
-        let &t_AB="\e[48;5;%dm"
-        let &t_AF="\e[38;5;%dm"
-        colorscheme ayu
-
-        " fix backspace issue on Conemu
-        inoremap <Char-0x07F> <BS>
-        nnoremap <Char-0x07F> <BS>
-    endif
-
-    " set default colorscheme
-    let ayucolor="dark" 
-    colorscheme ayu
-
-    "set line number colors
-    highlight LineNr guifg=#718096
 " }}}
 
 " Misc {{{
@@ -107,6 +83,9 @@
 
     noremap <Leader>y "+y
     noremap <Leader>p "+p
+
+    "highlight current line
+    set cursorline
 " }}}
 
 " Folding {{{
@@ -197,11 +176,11 @@
     " Jump to the window right to the current window
     map <C-l> <C-w>l
 
-    " Jump to the beginning of the current wparagraph
-    map <C-k> {
+    " Jump to the window above the current window
+    map <C-k> <C-w>k
 
-    " Jump to the end of the current wparagraph
-    map <C-j> }
+    " Jump to the window below the current window
+    map <C-j> <C-w>j
 " }}}
 
 " Tab Keymaps {{{
@@ -243,41 +222,36 @@
       nmap ,fs :let @*=expand("%")<CR>
       nmap ,fl :let @*=expand("%:p")<CR>
     endif
+
+    " Make full screen
+    map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 " }}}
 
 " External Packages {{{
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
+    " Specify a directory for plugins
+    " - For Neovim: stdpath('data') . '/plugged'
+    " - Avoid using standard Vim directory names like 'plugin'
+    call plug#begin('~/.vim/plugged')
 
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'dracula/vim'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'honza/vim-snippets'
+    Plug 'isruslan/vim-es6'
+    Plug 'jparise/vim-graphql'
+    Plug 'kien/ctrlp.vim'
+    Plug 'leafgarland/typescript-vim',
+    Plug 'MaxMEllon/vim-jsx-pretty'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Raimondi/delimitMate'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdtree'
+    Plug 'terryma/vim-multiple-cursors'
+    Plug 'tpope/vim-fugitive'
 
-    " let Vundle manage Vundle, required
-    Plugin 'VundleVim/Vundle.vim'
-
-    Plugin 'ayu-theme/ayu-vim'
-    Plugin 'dracula/vim'
-    Plugin 'honza/vim-snippets'
-    Plugin 'isruslan/vim-es6'
-    Plugin 'jparise/vim-graphql'
-    Plugin 'kien/ctrlp.vim'
-    Plugin 'leafgarland/typescript-vim',
-    Plugin 'MaxMEllon/vim-jsx-pretty'
-    Plugin 'Raimondi/delimitMate'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'terryma/vim-multiple-cursors'
-
-    " All of your Plugins must be added before the following line
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    " Initialize plugin system
+    call plug#end()
 " }}}
 
 " External package settings {{{
@@ -295,6 +269,15 @@
 
     " ctrlp - Ignore loading provided folders to improve startup time
     let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
+
+    " easy-motion
+    " Move to word
+    map  <Leader>w <Plug>(easymotion-bd-w)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+    " coc settings
+    " use enter to confirm completion
+    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }}}
 
 " File specific settings {{{
@@ -315,6 +298,22 @@
 
     " line breaks for text files
     autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
+" }}}
+
+" Colors {{{
+    " set default colorscheme
+
+    " ayu color scheme
+    let ayucolor="dark" 
+    colorscheme ayu
+
+    " solarized color scheme
+    " syntax enable
+    " set background=dark
+    " colorscheme solarized
+
+    "set line number colors
+    highlight LineNr guifg=#718096
 " }}}
 
 " vim:foldlevel=0
