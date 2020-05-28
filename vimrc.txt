@@ -270,6 +270,9 @@
     " ctrlp - Ignore loading provided folders to improve startup time
     let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
 
+    " ctrlp - Only search within the current working directory
+    let g:ctrlp_working_path_mode = ''
+
     " easy-motion
     " Move to word
     map  <Leader>w <Plug>(easymotion-bd-w)
