@@ -81,7 +81,10 @@
     " open the new file on the right when splitting a view
     set splitright
 
+    " copy to clipboard
     noremap <Leader>y "+y
+
+    " paste from clipboard
     noremap <Leader>p "+p
 
     "highlight current line
@@ -103,6 +106,9 @@
 
     " enable modelines (used in this file on the last line)
     set modelines=1
+
+    " close folds having one screen line
+    set fml=0
 
     " space key opens/closes folds
     nnoremap <space> za
@@ -210,6 +216,9 @@
     " open vimrc
     map <F2> :e $MYVIMRC<CR>
 
+    " find and replace
+    map <Leader>r :.,$s/
+
     " copy file path
     " Convert slashes to backslashes for Windows.
     if has('win32')
@@ -222,9 +231,6 @@
       nmap ,fs :let @*=expand("%")<CR>
       nmap ,fl :let @*=expand("%:p")<CR>
     endif
-
-    " Make full screen
-    map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 " }}}
 
 " External Packages {{{
@@ -233,9 +239,7 @@
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
 
-    Plug 'altercation/vim-colors-solarized'
     Plug 'ayu-theme/ayu-vim'
-    Plug 'dracula/vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'honza/vim-snippets'
     Plug 'isruslan/vim-es6'
@@ -243,6 +247,7 @@
     Plug 'kien/ctrlp.vim'
     Plug 'leafgarland/typescript-vim',
     Plug 'MaxMEllon/vim-jsx-pretty'
+    Plug 'morhetz/gruvbox'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Raimondi/delimitMate'
     Plug 'scrooloose/nerdcommenter'
@@ -284,36 +289,22 @@
 " }}}
 
 " File specific settings {{{
-    " 2 space tabs for html files
     autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-    " 2 space tabs for css files
     autocmd Filetype css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-    " 2 space tabs for javascript files
     autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-    " 2 space tabs for typescript files
     autocmd Filetype typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-    " 2 space tabs for typescript files
     autocmd Filetype json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
-    " line breaks for text files
     autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
 " }}}
 
 " Colors {{{
     " set default colorscheme
-
-    " ayu color scheme
-    let ayucolor="dark" 
-    colorscheme ayu
-
-    " solarized color scheme
-    " syntax enable
-    " set background=dark
-    " colorscheme solarized
+    colorscheme gruvbox
 
     "set line number colors
     highlight LineNr guifg=#718096
