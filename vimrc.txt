@@ -289,17 +289,18 @@
 " }}}
 
 " File specific settings {{{
-    autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    " Set the filetype based on the file's extension, overriding any
+    " filetype' that has already been set
+    au BufRead,BufNewFile *.tsx set filetype=typescriptreact
+    au BufRead,BufNewFile *.ts set filetype=typescript
 
-    autocmd Filetype css setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-    autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-    autocmd Filetype typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-    autocmd Filetype json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-
-    autocmd Filetype text setlocal linebreak expandtab softtabstop=2 shiftwidth=2 tabstop=2 wrap
+    autocmd Filetype html            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype css             setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype javascript      setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype typescript      setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype typescriptreact setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype json            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype text            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab linebreak wrap
 " }}}
 
 " Colors {{{
