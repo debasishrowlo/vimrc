@@ -89,6 +89,10 @@
 
     "highlight current line
     set cursorline
+
+    " enable UTF characters
+    set encoding=utf-8
+    set fileencoding=utf-8
 " }}}
 
 " Folding {{{
@@ -233,7 +237,7 @@
     endif
 " }}}
 
-" External Packages {{{
+" Plugins {{{
     " Specify a directory for plugins
     " - For Neovim: stdpath('data') . '/plugged'
     " - Avoid using standard Vim directory names like 'plugin'
@@ -244,7 +248,7 @@
     Plug 'honza/vim-snippets'
     Plug 'isruslan/vim-es6'
     Plug 'jparise/vim-graphql'
-    Plug 'kien/ctrlp.vim'
+    "Plug 'kien/ctrlp.vim'
     Plug 'leafgarland/typescript-vim',
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'morhetz/gruvbox'
@@ -259,7 +263,7 @@
     call plug#end()
 " }}}
 
-" External package settings {{{
+" Plugin settings {{{
     " NERDTree - Toggle file explorer
     map <leader>e :NERDTreeToggle<CR>
 
@@ -270,22 +274,65 @@
     let NERDTreeShowHidden=1
 
     " ctrlp - Show dotfiles and dotdirs in file finder
-    let ctrlp_show_hidden=1
+    " let ctrlp_show_hidden=1
 
     " ctrlp - Ignore loading provided folders to improve startup time
-    let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|vendor)$'
 
     " ctrlp - Only search within the current working directory
-    let g:ctrlp_working_path_mode = ''
+    " let g:ctrlp_working_path_mode = ''
 
     " easy-motion
     " Move to word
     map  <Leader>w <Plug>(easymotion-bd-w)
     nmap <Leader>w <Plug>(easymotion-overwin-w)
+" }}}
 
-    " coc settings
+" Coc Plugin Settings {{{
     " use enter to confirm completion
     inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+    " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+    " delays and poor user experience.
+    set updatetime=300
+
+    " Don't pass messages to |ins-completion-menu|.
+    set shortmess+=c
+
+    " Always show the signcolumn, otherwise it would shift the text each time
+    " diagnostics appear/become resolved.
+    if has("patch-8.1.1564")
+      " Recently vim can merge signcolumn and number column into one
+      set signcolumn=number
+    else
+      set signcolumn=yes
+    endif
+
+    " GoTo code navigation.
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " Use K to show documentation in preview window.
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Formatting selected code.
+    xmap = <Plug>(coc-format-selected)
+    nmap = <Plug>(coc-format-selected)
+
+    map <C-p> :CocList files<CR>
+    map <Leader>l :CocList lines<CR>
 " }}}
 
 " File specific settings {{{
@@ -306,6 +353,9 @@
 " Colors {{{
     " set default colorscheme
     colorscheme gruvbox
+
+    let g:gruvbox_contrast_dark = "hard"
+    set background=dark
 
     "set line number colors
     highlight LineNr guifg=#718096
