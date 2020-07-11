@@ -248,7 +248,6 @@
     Plug 'honza/vim-snippets'
     Plug 'isruslan/vim-es6'
     Plug 'jparise/vim-graphql'
-    "Plug 'kien/ctrlp.vim'
     Plug 'leafgarland/typescript-vim',
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'morhetz/gruvbox'
@@ -272,14 +271,6 @@
 
     " NERDTree - Show hidden files in file explorer
     let NERDTreeShowHidden=1
-
-    " ctrlp - Show dotfiles and dotdirs in file finder
-    " let ctrlp_show_hidden=1
-
-    " ctrlp - Ignore loading provided folders to improve startup time
-
-    " ctrlp - Only search within the current working directory
-    " let g:ctrlp_working_path_mode = ''
 
     " easy-motion
     " Move to word
