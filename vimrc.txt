@@ -243,20 +243,24 @@
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
 
-    Plug 'ayu-theme/ayu-vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'honza/vim-snippets'
-    Plug 'isruslan/vim-es6'
-    Plug 'jparise/vim-graphql'
-    Plug 'leafgarland/typescript-vim',
-    Plug 'MaxMEllon/vim-jsx-pretty'
-    Plug 'morhetz/gruvbox'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Raimondi/delimitMate'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'tpope/vim-fugitive'
+
+    " syntax highlighting
+    Plug 'isruslan/vim-es6'
+    Plug 'jparise/vim-graphql'
+    Plug 'leafgarland/typescript-vim',
+    Plug 'MaxMEllon/vim-jsx-pretty'
+
+    " themes
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'morhetz/gruvbox'
 
     " Initialize plugin system
     call plug#end()
@@ -342,14 +346,15 @@
 " }}}
 
 " Colors {{{
-    " set default colorscheme
-    colorscheme gruvbox
-
-    let g:gruvbox_contrast_dark = "hard"
     set background=dark
+    colorscheme nord
 
     "set line number colors
     highlight LineNr guifg=#718096
+
+    if (has("termguicolors"))
+        set termguicolors
+    endif
 " }}}
 
 " vim:foldlevel=0
