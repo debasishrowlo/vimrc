@@ -244,6 +244,7 @@
     call plug#begin('~/.vim/plugged')
 
     Plug 'easymotion/vim-easymotion'
+    Plug 'GrzegorzKozub/vimdows'
     Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Raimondi/delimitMate'
@@ -260,6 +261,7 @@
     " themes
     Plug 'arcticicestudio/nord-vim'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'herrbischoff/cobalt2.vim'
     Plug 'morhetz/gruvbox'
 
     " Initialize plugin system
