@@ -197,12 +197,18 @@
 
 " Tab Keymaps {{{
     " Open new tab
-    map <Leader>t :tabnew<CR>
+    map tn :tabnew<CR>
 
-    " Move to next tab
+    " Go to first tab
+    map ts :tabfirst<CR>
+
+    " Go to last tab
+    map te :tablast<CR>
+
+    " Go to next tab
     map tj :tabnext<CR>
 
-    " Move to previous tab
+    " Go to previous tab
     map tk :tabprev<CR>
 
     " Move current tab to the left
