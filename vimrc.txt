@@ -82,12 +82,10 @@
     set splitright
 
     " copy to clipboard
-    noremap <Leader>y "+y
     vmap <C-c> "+y
 
     " paste from clipboard
-    noremap <Leader>p "+p
-    imap <C-v> <ESC>"+pi
+    imap <C-v> <S-Insert>
 
     "highlight current line
     set cursorline
@@ -357,7 +355,8 @@
 
 " Colors {{{
     set background=dark
-    colorscheme nord
+    colorscheme gruvbox
+    let g:gruvbox_contrast_dark="soft"
 
     "set line number colors
     highlight LineNr guifg=#718096
