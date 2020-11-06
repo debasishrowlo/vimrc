@@ -87,6 +87,9 @@
     " paste from clipboard
     imap <C-v> <S-Insert>
 
+    " search highlighted word
+    vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
     "highlight current line
     set cursorline
 
