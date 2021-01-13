@@ -272,6 +272,7 @@
     Plug 'ayu-theme/ayu-vim'
     Plug 'herrbischoff/cobalt2.vim'
     Plug 'morhetz/gruvbox'
+    Plug 'altercation/vim-colors-solarized'
 
     " Initialize plugin system
     call plug#end()
@@ -338,12 +339,13 @@
     nmap = <Plug>(coc-format-selected)
 
     map <C-p> :CocList files<CR>
+    map <C-f> :CocList buffers<CR>
     map <Leader>l :CocList lines<CR>
 " }}}
 
 " File specific settings {{{
     " Set the filetype based on the file's extension, overriding any
-    " filetype' that has already been set
+    " filetype that has already been set
     au BufRead,BufNewFile *.tsx set filetype=typescriptreact
     au BufRead,BufNewFile *.ts set filetype=typescript
 
@@ -353,15 +355,15 @@
     autocmd Filetype typescript      setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
     autocmd Filetype typescriptreact setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
     autocmd Filetype json            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype text            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab linebreak wrap
+    autocmd Filetype text            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype cpp             setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 " }}}
 
 " Colors {{{
     set background=dark
-    colorscheme gruvbox
-    let g:gruvbox_contrast_dark="soft"
+    colorscheme nord
 
-    "set line number colors
+    "line number color
     highlight LineNr guifg=#718096
 
     if (has("termguicolors"))
