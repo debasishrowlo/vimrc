@@ -37,6 +37,12 @@
 " }}}
 
 " Misc {{{
+    " set autoindenting on
+    set autoindent
+
+    " copy the indentation from the previous line
+    set copyindent
+
     " auto reload files as they change on disk
     set autoread
 
@@ -90,7 +96,7 @@
     " search highlighted word
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-    "highlight current line
+    " highlight current line
     set cursorline
 
     " enable UTF characters
@@ -156,6 +162,9 @@
 " UI {{{
     " show relative line numbers
     set relativenumber
+
+    " add space between lines
+    set linespace=4
 
     " Hide Menu Bar
     set guioptions -=m 
@@ -260,19 +269,21 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
     Plug 'terryma/vim-multiple-cursors'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     " syntax highlighting
     Plug 'isruslan/vim-es6'
     Plug 'jparise/vim-graphql'
     Plug 'leafgarland/typescript-vim',
     Plug 'MaxMEllon/vim-jsx-pretty'
+    Plug 'sheerun/vim-polyglot'
 
     " themes
     Plug 'arcticicestudio/nord-vim'
     Plug 'ayu-theme/ayu-vim'
-    Plug 'herrbischoff/cobalt2.vim'
     Plug 'morhetz/gruvbox'
-    Plug 'altercation/vim-colors-solarized'
+    Plug 'sainnhe/gruvbox-material'
 
     " Initialize plugin system
     call plug#end()
@@ -361,10 +372,13 @@
 
 " Colors {{{
     set background=dark
-    colorscheme nord
+    colorscheme gruvbox
+    
+    " line number color
+    highlight LineNr guifg=#6B7280
 
-    "line number color
-    highlight LineNr guifg=#718096
+    " visual mode highlight color
+    highlight Visual guifg=#404040 guibg=#A3A3A3 gui=none
 
     if (has("termguicolors"))
         set termguicolors
