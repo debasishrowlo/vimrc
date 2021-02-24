@@ -282,8 +282,8 @@
     " themes
     Plug 'arcticicestudio/nord-vim'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'hardselius/warlock'
     Plug 'morhetz/gruvbox'
-    Plug 'sainnhe/gruvbox-material'
 
     " Initialize plugin system
     call plug#end()
@@ -357,8 +357,8 @@
 " File specific settings {{{
     " Set the filetype based on the file's extension, overriding any
     " filetype that has already been set
-    au BufRead,BufNewFile *.tsx set filetype=typescriptreact
     au BufRead,BufNewFile *.ts set filetype=typescript
+    au BufRead,BufNewFile *.tsx set filetype=typescriptreact
 
     autocmd Filetype html            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
     autocmd Filetype css             setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
@@ -371,8 +371,7 @@
 " }}}
 
 " Colors {{{
-    set background=dark
-    colorscheme gruvbox
+    colorscheme nord
     
     " line number color
     highlight LineNr guifg=#6B7280
@@ -386,3 +385,4 @@
 " }}}
 
 " vim:foldlevel=0
+
