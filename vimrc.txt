@@ -1,3 +1,5 @@
+syntax on
+
 " {{{
     source $VIMRUNTIME/vimrc_example.vim
 
@@ -360,18 +362,21 @@
     au BufRead,BufNewFile *.ts set filetype=typescript
     au BufRead,BufNewFile *.tsx set filetype=typescriptreact
 
-    autocmd Filetype html            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype css             setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype javascript      setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype typescript      setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype html setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype css setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype javascript setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype typescript setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
     autocmd Filetype typescriptreact setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype json            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype text            setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-    autocmd Filetype cpp             setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+    autocmd Filetype json setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype text setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+    autocmd Filetype cpp setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 " }}}
 
 " Colors {{{
-    colorscheme nord
+    colorscheme warlock
+
+    " airline theme
+    let g:airline_theme='monochrome'
     
     " line number color
     highlight LineNr guifg=#6B7280
