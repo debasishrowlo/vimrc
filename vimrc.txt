@@ -98,9 +98,6 @@ syntax on
     " search highlighted word
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-    " highlight current line
-    set cursorline
-
     " enable UTF characters
     set encoding=utf-8
     set fileencoding=utf-8
@@ -166,7 +163,7 @@ syntax on
     set relativenumber
 
     " add space between lines
-    set linespace=4
+    set linespace=6
 
     " Hide Menu Bar
     set guioptions -=m 
@@ -268,11 +265,11 @@ syntax on
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
 
+    Plug 'danishprakash/vim-yami'
     Plug 'easymotion/vim-easymotion'
     Plug 'GrzegorzKozub/vimdows'
     Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'Raimondi/delimitMate'
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
     Plug 'terryma/vim-multiple-cursors'
@@ -378,17 +375,17 @@ syntax on
 " }}}
 
 " Colors {{{
-    colorscheme warlock
+    colorscheme yami
 
     " airline theme
     let g:airline_theme='monochrome'
-    
-    " line number color
-    highlight LineNr guifg=#6B7280
+
+    " line numbers on left color
+    highlight LineNr guifg=#9CA3AF
 
     " visual mode highlight color
-    highlight Visual guifg=#404040 guibg=#A3A3A3 gui=none
-
+    highlight Visual guifg=#000000 guibg=#FFFFFF gui=none
+    
     if (has("termguicolors"))
         set termguicolors
     endif
