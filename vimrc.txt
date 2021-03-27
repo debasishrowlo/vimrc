@@ -162,8 +162,8 @@ syntax on
     " show relative line numbers
     set relativenumber
 
-    " add space between lines
-    set linespace=6
+    " remove space between lines
+    set linespace=0
 
     " Hide Menu Bar
     set guioptions -=m 
@@ -178,7 +178,7 @@ syntax on
     set guioptions-=L
 
     " set editor font
-    set guifont=consolas:h14:b
+    set guifont=Fira_Code_SemiBold:h13:W600:cANSI:qDRAFT
 " }}}
 
 " Movement Keymaps {{{
@@ -382,6 +382,9 @@ syntax on
 
     " line numbers on left color
     highlight LineNr guifg=#9CA3AF
+
+    " cursor color
+    highlight MatchParen guifg=black guibg=#4B5563
 
     " visual mode highlight color
     highlight Visual guifg=#000000 guibg=#FFFFFF gui=none
