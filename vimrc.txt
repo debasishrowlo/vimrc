@@ -159,7 +159,8 @@ syntax on
 " }}}
 
 " UI {{{
-    " show relative line numbers
+    " show hybrid line numbers
+    set number
     set relativenumber
 
     " remove space between lines
@@ -375,19 +376,22 @@ syntax on
 " }}}
 
 " Colors {{{
-    colorscheme yami
+    colorscheme night-owl-monochrome
 
     " airline theme
-    let g:airline_theme='monochrome'
+    let g:airline_theme='minimalist'
 
     " line numbers on left color
-    highlight LineNr guifg=#9CA3AF
+    " highlight LineNr guifg=#9CA3AF
 
     " cursor color
-    highlight MatchParen guifg=black guibg=#4B5563
+    " highlight MatchParen guifg=black guibg=#4B5563
 
     " visual mode highlight color
-    highlight Visual guifg=#000000 guibg=#FFFFFF gui=none
+    " highlight Visual guifg=#000000 guibg=#FFFFFF gui=none
+
+    " Prevent CoC from highligting the current word
+     highlight CocHighlightText guifg=fg guibg=bg
     
     if (has("termguicolors"))
         set termguicolors
