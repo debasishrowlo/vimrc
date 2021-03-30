@@ -167,7 +167,7 @@ syntax on
     set linespace=0
 
     " Hide Menu Bar
-    set guioptions -=m 
+    set guioptions -=m
 
     " Hide Tool Bar
     set guioptions -=T
@@ -379,7 +379,9 @@ syntax on
     colorscheme night-owl-monochrome
 
     " airline theme
-    let g:airline_theme='minimalist'
+    let g:airline_theme='minimalist' 
+    " Disable whitespace warning in airline
+    let g:airline#extensions#whitespace#enabled = 0
 
     " line numbers on left color
     " highlight LineNr guifg=#9CA3AF
@@ -392,11 +394,10 @@ syntax on
 
     " Prevent CoC from highligting the current word
      highlight CocHighlightText guifg=fg guibg=bg
-    
+
     if (has("termguicolors"))
         set termguicolors
     endif
 " }}}
 
 " vim:foldlevel=0
-
