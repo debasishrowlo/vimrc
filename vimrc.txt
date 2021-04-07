@@ -178,6 +178,12 @@ syntax on
     " Hide left scrollbar when windows are vertically split
     set guioptions-=L
 
+    " Hide right scrollbar
+    set guioptions-=r
+
+    " Hide left scrollbar when windows are vertically split
+    set guioptions-=R
+
     " set editor font
     set guifont=Fira_Code_SemiBold:h13:W600:cANSI:qDRAFT
 " }}}
