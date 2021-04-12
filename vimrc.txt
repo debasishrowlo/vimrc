@@ -382,21 +382,42 @@ syntax on
 " }}}
 
 " Colors {{{
-    colorscheme night-owl-monochrome
+    set background=dark
+    hi clear
+
+    hi Comment guifg=#637777
+    hi Cursor guibg=White guifg=bg
+    hi CursorLine guibg=#2c3043 guifg=White
+    hi Directory guibg=bg guifg=fg
+    hi ErrorMsg guibg=#991B1B guifg=fg
+    hi Folded guibg=bg guifg=#637777
+    hi LineNr guifg=#718096
+    hi MatchParen guibg=#818b99 guifg=bg
+    hi MoreMsg guifg=fg guibg=bg
+    hi NonText guifg=#718096
+    hi Normal guibg=#011627 guifg=#d7dbe0
+    hi Pmenu guibg=#2c3043 guifg=fg
+    hi PmenuSel guifg=bg guibg=fg
+    hi Search guibg=#9CA3AF guifg=Black
+    hi Todo guibg=bg guifg=#637777
+    hi VertSplit guibg=#637777 guifg=bg
+    hi Visual guibg=#9CA3AF guifg=Black
+    hi WarningMsg guifg=#EF4444
+    hi StatusLineNC guibg=bg guifg=fg
+
+    hi Comment guifg=#637777
+    hi Constant guifg=fg
+    hi Identifier guifg=fg
+    hi PreProc guifg=fg
+    hi Special guifg=fg
+    hi Statement guifg=fg
+    hi Title guifg=fg
+    hi Type guifg=fg
 
     " airline theme
     let g:airline_theme='minimalist' 
     " Disable whitespace warning in airline
     let g:airline#extensions#whitespace#enabled = 0
-
-    " line numbers on left color
-    " highlight LineNr guifg=#9CA3AF
-
-    " cursor color
-    " highlight MatchParen guifg=black guibg=#4B5563
-
-    " visual mode highlight color
-    " highlight Visual guifg=#000000 guibg=#FFFFFF gui=none
 
     " Prevent CoC from highligting the current word
      highlight CocHighlightText guifg=fg guibg=bg
