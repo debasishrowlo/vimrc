@@ -66,6 +66,7 @@ doskey nid = npm install --save-dev $*
 doskey nud = npm uninstall --save-dev $*
 
 doskey gs = git status $*
+doskey gb = git branch $*
 doskey gco = git checkout $*
 doskey gcm = git commit -m $*
 doskey gcam = git commit -am $*
