@@ -42,14 +42,17 @@ syntax on
     " set autoindenting on
     set autoindent
 
-    " copy the indentation from the previous line
-    set copyindent
+    " enable smart indent
+    set smartindent
 
     " auto reload files as they change on disk
     set autoread
 
     " redraw only when need to
     set lazyredraw
+
+    " enable side scrolling
+    set sidescroll=1
 
     " make the search case sensitive if uppercase letter available
     set ignorecase
@@ -399,6 +402,7 @@ syntax on
     hi Pmenu guibg=#2c3043 guifg=fg
     hi PmenuSel guifg=bg guibg=fg
     hi Search guibg=#9CA3AF guifg=Black
+    hi SignColumn guibg=bg guifg=fg
     hi Todo guibg=bg guifg=#637777
     hi VertSplit guibg=#637777 guifg=bg
     hi Visual guibg=#9CA3AF guifg=Black
