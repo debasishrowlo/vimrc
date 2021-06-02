@@ -3,5 +3,5 @@
   "diagnostic.enableSign": false,
   "diagnostic.enableMessage": "never",
   "suggest.autoTrigger": "none",
-  "suggest.echodocSupport": true
+  "signature.enable": false
 }
