@@ -391,6 +391,8 @@ syntax on
     set background=dark
     hi clear
 
+    hi Normal guibg=#011627 guifg=#c6c9cf
+
     hi Comment guifg=#637777
     hi Cursor guibg=White guifg=bg
     hi CursorLine guibg=#2c3043 guifg=White
@@ -401,7 +403,6 @@ syntax on
     hi MatchParen guibg=#818b99 guifg=bg
     hi MoreMsg guifg=fg guibg=bg
     hi NonText guifg=#718096
-    hi Normal guibg=#011627 guifg=#d7dbe0
     hi Pmenu guibg=#2c3043 guifg=fg
     hi PmenuSel guifg=bg guibg=fg
     hi Search guibg=#9CA3AF guifg=Black
@@ -412,7 +413,6 @@ syntax on
     hi WarningMsg guifg=#EF4444
     hi StatusLineNC guibg=bg guifg=fg
 
-    hi Comment guifg=#637777
     hi Constant guifg=fg
     hi Identifier guifg=fg
     hi PreProc guifg=fg
