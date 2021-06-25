@@ -405,25 +405,66 @@ syntax on
 " }}}
 
 " Night Owl Monochrome Theme {{{
-  hi Normal guibg=#011627 guifg=#c6c9cf
+  "hi Normal guibg=#011627 guifg=#c6c9cf
   
-  hi Comment guifg=#4C566A
-  hi Cursor guibg=White guifg=bg
-  hi CursorLine guibg=#2c3043 guifg=White
+  "hi Comment guifg=#4C566A
+  "hi Cursor guibg=White guifg=bg
+  "hi CursorLine guibg=#2c3043 guifg=White
+  "hi Directory guibg=bg guifg=fg
+  "hi ErrorMsg guibg=#991B1B guifg=fg
+  "hi Folded guibg=bg guifg=#637777
+  "hi LineNr guifg=#718096
+  "hi MatchParen guibg=#818b99 guifg=bg
+  "hi MoreMsg guifg=fg guibg=bg
+  "hi NonText guifg=#718096
+  "hi Pmenu guibg=#2c3043 guifg=fg
+  "hi PmenuSel guifg=bg guibg=fg
+  "hi Search guibg=#9CA3AF guifg=Black
+  "hi SignColumn guibg=bg guifg=fg
+  "hi Todo guibg=bg guifg=#637777
+  "hi VertSplit guibg=#637777 guifg=bg
+  "hi Visual guibg=#9CA3AF guifg=Black
+  "hi WarningMsg guifg=#EF4444
+  "hi StatusLineNC guibg=bg guifg=fg
+  
+  "hi Constant guifg=fg
+  "hi Identifier guifg=fg
+  "hi PreProc guifg=fg
+  "hi Special guifg=fg
+  "hi Statement guifg=fg
+  "hi Title guifg=fg
+  "hi Type guifg=fg
+" }}}
+
+" Monochrome Theme {{{
+  " TODO: highlight color for NerdTree and COC
+  " TODO: fix color for semicolon when using "TODO" keyboard
+
+  hi Normal guibg=#101010 guifg=#AAAAAA
+  
+  hi Comment guifg=#454545
+  hi Cursor guibg=#AAAAAA guifg=bg
+
+  " highlight color for NerdTree and COC
+  hi CursorLine guibg=fg guifg=bg
+
   hi Directory guibg=bg guifg=fg
   hi ErrorMsg guibg=#991B1B guifg=fg
-  hi Folded guibg=bg guifg=#637777
-  hi LineNr guifg=#718096
-  hi MatchParen guibg=#818b99 guifg=bg
+  hi Folded guibg=bg guifg=#454545
+  hi LineNr guifg=#707070
+
+  " highlight color when showing matching bracket
+  hi MatchParen guibg=#818b99 guifg=bg 
+
   hi MoreMsg guifg=fg guibg=bg
-  hi NonText guifg=#718096
-  hi Pmenu guibg=#2c3043 guifg=fg
+  hi NonText guifg=#707070
+  hi Pmenu guibg=#383838 guifg=fg
   hi PmenuSel guifg=bg guibg=fg
-  hi Search guibg=#9CA3AF guifg=Black
+  hi Search guibg=bg guifg=fg
   hi SignColumn guibg=bg guifg=fg
-  hi Todo guibg=bg guifg=#637777
+  hi Todo guibg=bg guifg=#454545
   hi VertSplit guibg=#637777 guifg=bg
-  hi Visual guibg=#9CA3AF guifg=Black
+  hi Visual guibg=fg guifg=bg
   hi WarningMsg guifg=#EF4444
   hi StatusLineNC guibg=bg guifg=fg
   
