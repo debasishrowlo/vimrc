@@ -454,7 +454,7 @@ syntax on
   hi LineNr guifg=#707070
 
   " highlight color when showing matching bracket
-  hi MatchParen guibg=#707070 guifg=bg 
+  hi MatchParen guibg=#454545 guifg=bg 
 
   hi MoreMsg guifg=fg guibg=bg
   hi NonText guifg=#707070
