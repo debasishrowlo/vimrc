@@ -275,10 +275,8 @@ syntax on
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
 
-    Plug 'danishprakash/vim-yami'
     Plug 'easymotion/vim-easymotion'
     Plug 'GrzegorzKozub/vimdows'
-    Plug 'honza/vim-snippets'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
@@ -286,17 +284,8 @@ syntax on
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
-    " syntax highlighting
-    Plug 'isruslan/vim-es6'
-    Plug 'jparise/vim-graphql'
-    Plug 'leafgarland/typescript-vim',
-    Plug 'MaxMEllon/vim-jsx-pretty'
-    Plug 'sheerun/vim-polyglot'
-
     " themes
-    Plug 'arcticicestudio/nord-vim'
     Plug 'ayu-theme/ayu-vim'
-    Plug 'hardselius/warlock'
     Plug 'morhetz/gruvbox'
 
     " Initialize plugin system
@@ -320,8 +309,16 @@ syntax on
 " }}}
 
 " Coc Plugin Settings {{{
-    " use enter to confirm completion
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    " use <tab> for trigger completion and navigate to the next complete item
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+
+    inoremap <silent><expr> <Tab>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<Tab>" :
+          \ coc#refresh()
 
     " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
     " delays and poor user experience.
@@ -345,8 +342,8 @@ syntax on
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
-    " Use K to show documentation in preview window.
-    nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+    " Manually trigger documentation in preview window.
+    nnoremap <silent> <leader>? :call <SID>show_documentation()<CR>
 
     function! s:show_documentation()
       if (index(['vim','help'], &filetype) >= 0)
@@ -356,11 +353,11 @@ syntax on
       endif
     endfunction
 
-    " manually trigger diagnostic window
-    nnoremap <silent> <leader>/ :call CocAction('diagnosticInfo') <CR>
+     " Manually trigger diagnostic window
+     nnoremap <silent> <leader>/ :call CocAction('diagnosticInfo') <CR>
 
     " Highlight the symbol and its references when holding the cursor.
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+     autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Formatting selected code.
     xmap = <Plug>(coc-format-selected)
@@ -437,7 +434,7 @@ syntax on
 " }}}
 
 " Monochrome Theme {{{
-  " TODO: highlight color for NerdTree and COC
+  " TODO: Fix highlighting searched text with black color for NerdTree and COC
   " TODO: fix color for semicolon when using "TODO" keyboard
 
   hi Normal guibg=#101010 guifg=#AAAAAA
@@ -445,7 +442,7 @@ syntax on
   hi Comment guifg=#454545
   hi Cursor guibg=#AAAAAA guifg=bg
 
-  " highlight color for NerdTree and COC
+  " highlight color for selection in NerdTree and COC
   hi CursorLine guibg=fg guifg=bg
 
   hi Directory guibg=bg guifg=fg
