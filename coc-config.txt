@@ -1,7 +1,7 @@
 {
   "coc.preferences.bracketEnterImprove": false,
   "diagnostic.enableSign": false,
-  "diagnostic.enableMessage": "never",
-  "suggest.autoTrigger": "none",
-  "signature.enable": false
+  "diagnostic.enableMessage": "always",
+  "suggest.autoTrigger": "always",
+  "signature.enable": true
 }
